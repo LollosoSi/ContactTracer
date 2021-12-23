@@ -74,6 +74,16 @@ public:
 	/* Nodes to be linked */
 	Node *first = nullptr, *second = nullptr;
 
+
+	// TODO: complete implementation & deserialization
+	// TODO: Save & reconvert node ID to Pointers
+	std::ostream operator<<(std::ostream &out) {
+		std::string divider = string(";");
+		out << this->distance << divider << this->exposure << divider
+				<< this->date << divider;
+		return out;
+	}
+
 protected:
 	// Meters
 	float distance = 0;

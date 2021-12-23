@@ -128,8 +128,6 @@ public:
 		std::string divider = string("+");
 		out << this->id << divider << this->type << divider << this->infection_chance << divider;
 
-
-
 		return out;
 	}
 
