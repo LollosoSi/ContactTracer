@@ -124,9 +124,20 @@ public:
 	}
 
 	// TODO: complete implementation & deserialization
-	std::ostream operator<<(std::ostream &out){
+	friend std::ostream& operator<<(std::ostream &out, const Node &n){
 		std::string divider = string("+");
-		out << this->id << divider << this->type << divider << this->infection_chance << divider;
+		out << n.id << divider << n.type << divider << n.infection_chance;
+		list<Contact*>::const_iterator it = n.contacts.begin();
+		while(it!=n.contacts.end()){
+			// Node is added only if the node being printed is first, in order to save memory
+			if((*it)->get_node(0) == &n){
+				out << divider;
+				out << (**it).first->get_id();
+				out << divider;
+				out << (**it).second->get_id();
+			}
+			it++;
+		}
 
 		return out;
 	}

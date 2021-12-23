@@ -11,6 +11,7 @@
 class Node;
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -52,7 +53,9 @@ public:
 	}
 
 	/** Destructor */
-	virtual ~Contact();
+	virtual ~Contact(){
+		if(ids){delete ids; ids = nullptr;}
+	}
 
 	/**
 	 * @returns first if second is passed, second if first is passed, otherwise nullptr
@@ -74,15 +77,28 @@ public:
 	/* Nodes to be linked */
 	Node *first = nullptr, *second = nullptr;
 
-
 	// TODO: complete implementation & deserialization
 	// TODO: Save & reconvert node ID to Pointers
-	std::ostream operator<<(std::ostream &out) {
+	friend ostream& operator <<(ostream &out, const Contact &c) {
 		std::string divider = string(";");
-		out << this->distance << divider << this->exposure << divider
-				<< this->date << divider;
+		out << (c.distance) << divider << (c.exposure) << divider << (c.date);
 		return out;
 	}
+
+	/** Used to store IDs during deserialization. Pointer must be deleted afterwards
+	 *
+	 */
+	class TempID {
+	public:
+		TempID() : TempID("",""){};
+		TempID(std::string ID1, std::string ID2){this->ID1 = ID1; this->ID2=ID2;}
+		~TempID(){}
+
+		std::string get_id(unsigned int id = 0){ return id == 0 ? ID1 : ID2; }
+	private:
+		std::string ID1 = "", ID2 = "";
+	};
+	TempID *ids = nullptr;
 
 protected:
 	// Meters

@@ -61,17 +61,35 @@ public:
 	 *	Simple enclosed call
 	 */
 	void add_node(Node *n) {
-		if(!find_node(n->get_id()))
+		if (!find_node(n->get_id()))
 			nodes.push_back(n);
-		else{
+		else {
 			// This node is NOT UNIQUE! Can't add duplicate nodes.
 		}
 	}
 
-
-	bool is_contact(std::string ID1, std::string ID2){
+	bool is_contact(std::string ID1, std::string ID2) {
 		Node *n1 = find_node(ID1), *n2 = find_node(ID2);
 		return n1 && n2 ? (n1->is_contact(n2)) : false;
+	}
+
+	friend std::ostream& operator<<(std::ostream &out, const Graph &g) {
+		list<Node*>::const_iterator it = g.nodes.begin();
+		while (it != g.nodes.end()) {
+			out << **it << std::endl;
+			it++;
+		}
+		return out;
+	}
+
+	// TODO: Complete deserialization
+	friend std::istream& operator>>(std::istream &in, Graph &g) {
+		std::string data = "";
+		while (!in.eof()) {
+
+		}
+
+		return in;
 	}
 
 protected:
