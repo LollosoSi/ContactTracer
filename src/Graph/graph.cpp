@@ -17,7 +17,7 @@ Graph::~Graph() {
 
 void Graph::delete_all_nodes() {
 	list<Node*>::iterator it = nodes.begin();
-	while (it != nodes.end()) {
+	while ((it=nodes.begin()) != nodes.end()) {
 		delete_node(*it);
 		it++;
 	}

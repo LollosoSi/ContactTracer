@@ -8,6 +8,9 @@
 #ifndef GRAPH_RULES_ENUM_H_
 #define GRAPH_RULES_ENUM_H_
 
+/** Used for serialization/deserialization */
+static const char* divider_node = "+";
+static const char* divider_contact = ";";
 
 enum nodetype{
 	node = 0,

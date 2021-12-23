@@ -38,7 +38,7 @@ void Node::add_contact(Contact *c) {
 
 void Node::delete_all_contacts_both(){
 	list<Contact*>::iterator it = contacts.begin();
-	while (it != contacts.end()) {
+	while ((it=contacts.begin()) != contacts.end()) {
 		delete_contact_both(*it);
 		it++;
 	}

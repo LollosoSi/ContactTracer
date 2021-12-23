@@ -76,8 +76,9 @@ public:
 	friend std::ostream& operator<<(std::ostream &out, const Graph &g) {
 		list<Node*>::const_iterator it = g.nodes.begin();
 		while (it != g.nodes.end()) {
-			out << **it << std::endl;
+			out << **it;
 			it++;
+			if(it!=g.nodes.end())out << std::endl;
 		}
 		return out;
 	}
@@ -85,12 +86,31 @@ public:
 	// TODO: Complete deserialization
 	friend std::istream& operator>>(std::istream &in, Graph &g) {
 		std::string data = "";
+
 		while (!in.eof()) {
+			Node *n = Node::NodeFactory().getNode();
+			in >> *n;
+			g.add_node(n);
+		}
+
+		list<Node*>::iterator it = g.nodes.begin();
+		Contact::TempID *tid = nullptr;
+		while(it!=g.nodes.end()){
+			(**it).get_next_tempid(&tid);
+			while(tid!=nullptr){
+				(*(*tid).get_node_pointer(0)) = g.find_node(std::string((*tid).get_id(0)));
+				(*(*tid).get_node_pointer(1)) = g.find_node(std::string((*tid).get_id(1)));
+				(**it).get_next_tempid(&tid);
+			}
+			it++;
+
 
 		}
 
 		return in;
 	}
+
+
 
 protected:
 
@@ -101,6 +121,7 @@ protected:
 		if (n) {
 			nodes.remove(n);
 			delete n;
+			n=nullptr;
 		}
 	}
 

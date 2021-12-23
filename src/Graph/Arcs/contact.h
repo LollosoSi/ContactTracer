@@ -10,10 +10,15 @@
 //#include "../node.h"
 class Node;
 
+#include "../Rules/enum.h"
+
 #include <string>
+#include <cstring>
 #include <iostream>
 
 using namespace std;
+
+
 
 /** Describes contact between two nodes */
 class Contact {
@@ -23,7 +28,7 @@ public:
 	 */
 	Contact() {
 	}
-	;
+
 
 	/** Constructor
 	 * @brief sets all the basic components
@@ -37,6 +42,21 @@ public:
 		update(distance, exposure, date);
 		first = n1;
 		second = n2;
+	}
+
+	/** Tries to extract components from char array
+	 *
+	 */
+	Contact(char* data){
+		char* dt = std::strtok(data, divider_contact);
+		if(!dt) return;
+		this->distance = atof(dt);
+		dt = std::strtok(NULL, divider_contact);
+		if(!dt) return;
+		this->exposure = atof(dt);
+		dt = std::strtok(NULL, divider_node);
+		if(!dt) return;
+		this->date = string(dt);
 	}
 
 	/**
@@ -80,8 +100,7 @@ public:
 	// TODO: complete implementation & deserialization
 	// TODO: Save & reconvert node ID to Pointers
 	friend ostream& operator <<(ostream &out, const Contact &c) {
-		std::string divider = string(";");
-		out << (c.distance) << divider << (c.exposure) << divider << (c.date);
+		out << (c.distance) << divider_contact << (c.exposure) << divider_contact << (c.date);
 		return out;
 	}
 
@@ -95,10 +114,25 @@ public:
 		~TempID(){}
 
 		std::string get_id(unsigned int id = 0){ return id == 0 ? ID1 : ID2; }
+		Node** get_node_pointer(unsigned int id = 0){ return id == 0 ? (&n1) : (&n2); }
 	private:
 		std::string ID1 = "", ID2 = "";
+		Node* n1=nullptr;
+		Node* n2=nullptr;
+
 	};
 	TempID *ids = nullptr;
+	void add_temp_id(std::string ID1, std::string ID2){
+		if(!ids) delete ids;
+		ids = new TempID(ID1, ID2);
+	}
+	TempID* get_temp_id(){return ids;}
+
+	void sync_temp_id(){
+		first = *ids->get_node_pointer(0);
+		second = *ids->get_node_pointer(1);
+		delete ids;
+	}
 
 protected:
 	// Meters
