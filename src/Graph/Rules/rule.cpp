@@ -7,20 +7,29 @@
 
 #include "rule.h"
 
-
-Node* higher_chance_node(Contact &c){
-	return ((c.first->get_infection_chance()) - (c.second->get_infection_chance())) <= 0 ? nullptr : c.first->get_infection_chance() > c.second->get_infection_chance() ? c.first : c.second;
+/**
+ *  @returns in contact higher infection chance node's pointer
+ *  @param c Contact object where to search for higher chance node
+ */
+Node* higher_chance_node(Contact &c) {
+	return (c.first->get_infection_chance() == c.second->get_infection_chance()) ? nullptr :
+			c.first->get_infection_chance() > c.second->get_infection_chance() ?
+					c.first : c.second;
 }
 
 /*
-Node* other_node(Contact &c, Node *n){
-	return n == c.first ? c.second : c.first;
-}*/
+ Node* other_node(Contact &c, Node *n){
+ return n == c.first ? c.second : c.first;
+ }*/
 
-void SimpleRule::calc(Contact &c){
+void SimpleRule::calc(Contact &c) {
 	Node *h = higher_chance_node(c);
-	if(h){
-		c.get_other_node(h)->set_infection_chance(h->get_infection_chance()-20);
-		//other_node(c,h)->propagate_rule(((Rule)*this));
+	if (h) {
+		float ifc = h->get_infection_chance() - 0.2;
+		if (c.get_other_node(h)->get_infection_chance() < ifc && ifc > 0.01f) {
+			c.get_other_node(h)->set_infection_chance(ifc);
+			//std::cout << "Setting ifc of " << c.get_other_node(h)->get_id() << " of " << ifc << std::endl;
+			SimpleRule::calculate_node(c.get_other_node(h));
+		}
 	}
 }

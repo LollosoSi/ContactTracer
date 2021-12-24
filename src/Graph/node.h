@@ -20,8 +20,6 @@
 
 using namespace std;
 
-
-
 /**
  *  @brief Represents on Graph entry
  *  @desc This is a basic node. Only contains its type, unique identifier and its own list of Contacts (links) with their attached data
@@ -57,7 +55,9 @@ public:
 	 * 	@author Andrea
 	 */
 	void set_infection_chance(float infection_chance) {
-		this->infection_chance = infection_chance > 1.0f ? 1 : infection_chance < 0.0f ? 0 : infection_chance;
+		this->infection_chance =
+				infection_chance > 1.0f ? 1 :
+				infection_chance < 0.0f ? 0 : infection_chance;
 	}
 
 	/**	@brief Mark node as infected or clean
@@ -122,17 +122,18 @@ public:
 	 * @returns true if link with such node exists
 	 */
 	bool is_contact(Node *n) const {
-		return find_link(n)!=nullptr;
+		return find_link(n) != nullptr;
 	}
 
 	// TODO: complete implementation & deserialization
 	friend std::ostream& operator<<(std::ostream &out, const Node &n) {
-		out << n.id << divider_node << n.type << divider_node << n.infection_chance;
+		out << n.id << divider_node << n.type << divider_node
+				<< n.infection_chance;
 		list<Contact*>::const_iterator it = n.contacts.begin();
 		while (it != n.contacts.end()) {
 
 			// Node is added only if the node being printed is first, in order to save memory
-			if ((*it)->get_node(0) == &n) {
+			if ((*it)->get_node(0) == &n || true) {
 				out << divider_node;
 				out << **it;
 
@@ -170,7 +171,7 @@ public:
 
 			Contact *c = new Contact(data);
 
-			char *d1 = std::strtok(line+cursor, divider_node);
+			char *d1 = std::strtok(line + cursor, divider_node);
 			cursor += 1 + std::strlen(d1);
 
 			data = std::strtok(NULL, divider_node);
@@ -201,11 +202,44 @@ public:
 		if (inside_iterator == contacts.end()) {
 			*tid = nullptr;
 			return;
-		}else{
+		} else {
 			*tid = (**inside_iterator).get_temp_id();
 		}
 	}
 
+	/** Ensures no changes can be done over contacts
+	 *	NOTE: Might need a different implementation
+	 */
+	list<Contact*>::const_iterator get_contact_constant_iterator_begin(){return contacts.begin();}
+	list<Contact*>::const_iterator get_contact_constant_iterator_end(){return contacts.end();}
+
+	/* Unused code. Replaced with get_contact_constant_iterator
+	list<Contact*>::iterator inside_iterator_contacts;
+	void get_next_contact(Contact **c) {
+		if (*c == nullptr) {
+			inside_iterator_contacts = contacts.begin();
+			if (inside_iterator_contacts == contacts.end())
+				*c = nullptr;
+			else
+				*c = (*inside_iterator_contacts);
+			return;
+		}
+
+
+		inside_iterator_contacts++;
+
+		if (inside_iterator_contacts == contacts.end()) {
+			*c = nullptr;
+			return;
+		} else {
+			*c = (*inside_iterator_contacts);
+		}
+	}
+	*/
+
+	/**  Constructor of Node object
+	 * 	@brief Allows for faster building of a Node object and must be used to ensure compatibility
+	 */
 	class NodeFactory {
 	public:
 		/**
@@ -276,7 +310,11 @@ public:
 	 * @param date Date+Time of contact
 	 * @author Andrea
 	 */
-//void add_contact(Node *n, float exposure, float distance, string date){Contact *c = new Contact(distance, exposure, date, this, n); add_contact(c); n->add_contact(c); };
+	void add_contact(Node *n, float exposure, float distance, string date) {
+		//Contact *c = new Contact(distance, exposure, date, this, n); add_contact(c); n->add_contact(c);
+	}
+
+
 protected:
 
 	/** Returns the contact pointer or nullptr if not found
@@ -285,6 +323,7 @@ protected:
 	Contact* find_link(Node *n) const;
 
 	/** @brief Empty constructor of class
+	 *  NOTE: This object must be instanced from a NodeFactory object
 	 *  @author Andrea
 	 */
 	Node() {
@@ -329,13 +368,13 @@ protected:
 			return; // can't delete null pointer
 		this->delete_contact(c);
 		c->get_other_node(this)->delete_contact(c);
-		c=nullptr;
+		c = nullptr;
 	}
 
 	/** Returns contact list
 	 *  NOTE: Bad practice, removed
 	 */
-//const list<Contact*> get_contact_list()const{return contacts;}
+	//const list<Contact*> get_contact_list()const{return contacts;}
 	/** Identifier of node */
 	string id = "";
 
@@ -355,6 +394,8 @@ protected:
 	}
 
 private:
+	friend void Rule();
+
 	/** Contact list */
 	list<Contact*> contacts;
 };

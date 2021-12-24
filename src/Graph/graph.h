@@ -9,6 +9,7 @@
 
 #include "node.h"
 #include "Arcs/contact.h"
+#include "Rules/rule.h"
 
 #include <list>
 #include <string>
@@ -54,7 +55,7 @@ public:
 	 */
 	void mark_infected(std::string ID, bool infected) {
 		Node *n = find_node(ID);
-		if(n)
+		if (n)
 			n->set_infected(infected);
 	}
 
@@ -70,22 +71,38 @@ public:
 		}
 	}
 
+	/**
+	 *  @brief check existence of Arc
+	 *  @returns True if a contact object referencing the two nodes is found
+	 *  @param ID1 Node 1 id
+	 *  @param ID2 Node 2 id
+	 */
 	bool is_contact(std::string ID1, std::string ID2) {
 		Node *n1 = find_node(ID1), *n2 = find_node(ID2);
 		return n1 && n2 ? (n1->is_contact(n2)) : false;
 	}
 
+	/**
+	 *  @brief Serialization to ostream object Format: {Node}+{Contact:1}+{FirstNodeContact:1}+{SecondNodeContact:1}+{Contact:2}+{FirstNodeContact:2}+{SecondNodeContact:2}
+	 */
 	friend std::ostream& operator<<(std::ostream &out, const Graph &g) {
 		list<Node*>::const_iterator it = g.nodes.begin();
 		while (it != g.nodes.end()) {
 			out << **it;
 			it++;
-			if(it!=g.nodes.end())out << std::endl;
+			if (it != g.nodes.end())
+				out << std::endl;
 		}
 		return out;
 	}
 
-	// TODO: Complete deserialization
+	void print_node(std::string ID, std::ostream &out){
+		out << *find_node(ID);
+	}
+
+	/**
+	 * @brief Deserialization from istream object <br> Format: {Node}+{Contact:1}+{FirstNodeContact:1}+{SecondNodeContact:1}+{Contact:2}+{FirstNodeContact:2}+{SecondNodeContact:2}
+	 */
 	friend std::istream& operator>>(std::istream &in, Graph &g) {
 		g.delete_all_nodes();
 
@@ -97,22 +114,37 @@ public:
 
 		list<Node*>::iterator it = g.nodes.begin();
 		Contact::TempID *tid = nullptr;
-		while(it!=g.nodes.end()){
+		while (it != g.nodes.end()) {
 			(**it).get_next_tempid(&tid);
-			while(tid!=nullptr){
-				(*(*tid).get_node_pointer(0)) = g.find_node(std::string((*tid).get_id(0)));
-				(*(*tid).get_node_pointer(1)) = g.find_node(std::string((*tid).get_id(1)));
+			while (tid != nullptr) {
+				(*(*tid).get_node_pointer(0)) = g.find_node(
+						std::string((*tid).get_id(0)));
+				(*(*tid).get_node_pointer(1)) = g.find_node(
+						std::string((*tid).get_id(1)));
 				(**it).get_next_tempid(&tid);
 			}
 			it++;
-
-
 		}
 
 		return in;
 	}
 
-
+	/** Propagates a Rule object to all Nodes
+	 * 	@brief applies rule for each contact found in node and calculates infection chance
+	 * 	@param r Rule to be applied
+	 * 	NOTE: Rule is a pure virtual, as such must be extended
+	 */
+	void apply_rule(Rule *r) {
+		// The rule must be applied beginning from the nodes which have chance equal to 1
+		list<Node*>::iterator it = nodes.begin();
+		while (it != nodes.end()) {
+			// Is this the node we want to start a chain?
+			if ((**it).get_infection_chance() == 1) {
+				r->calculate_node(*it);
+			}
+			it++;
+		}
+	}
 
 protected:
 
@@ -123,7 +155,7 @@ protected:
 		if (n) {
 			nodes.remove(n);
 			delete n;
-			n=nullptr;
+			n = nullptr;
 		}
 	}
 
