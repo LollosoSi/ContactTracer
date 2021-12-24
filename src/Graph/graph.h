@@ -146,6 +146,14 @@ public:
 		}
 	}
 
+	/**
+	 *  @returns selected node infection chance
+	 */
+	float get_node_infection_chance(std::string ID){
+		Node *n = find_node(ID);
+		return n?n->get_infection_chance():0;
+	}
+
 protected:
 
 	/** Deletes one node from graph

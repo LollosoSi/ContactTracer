@@ -14,6 +14,8 @@ using namespace std;
 #include "Graph/graph.h"
 #include "Graph/Rules/rule.h"
 
+#include "Graph/Rules/Chance/collection_chance_functions.h"
+
 Graph g;
 void writeToFile() {
 	ofstream of;
@@ -29,16 +31,20 @@ void readFile() {
 	in.close();
 }
 
+void print_chance(string node){
+	cout << "Infection chance of " << node << " is " << (g.get_node_infection_chance(node)*100) << "%\n";
+}
+
 int main() {
 
-	readFile();
+	//readFile();
 	g.add_node(Node::NodeFactory(string("nodo0")).set_type(0).getNode());
 	g.add_node(Node::NodeFactory(string("nodo1")).set_type(1).getNode());
 	g.add_node(Node::NodeFactory(string("nodo2")).set_type(2).getNode());
 	g.add_node(Node::NodeFactory(string("nodo3")).set_type(0).getNode());
 	g.add_node(Node::NodeFactory(string("nodo4")).set_type(1).getNode());
 	g.add_node(Node::NodeFactory(string("nodo5")).set_type(2).getNode());
-	g.add_node(Node::NodeFactory(string("nodo6")).set_type(0).getNode());
+/*	g.add_node(Node::NodeFactory(string("nodo6")).set_type(0).getNode());
 	g.add_node(Node::NodeFactory(string("nodo7")).set_type(1).getNode());
 	g.add_node(Node::NodeFactory(string("nodo8")).set_type(2).getNode());
 	g.add_node(Node::NodeFactory(string("nodo9")).set_type(0).getNode());
@@ -50,37 +56,36 @@ int main() {
 	g.add_node(Node::NodeFactory(string("nodo15")).set_type(2).getNode());
 	g.add_node(Node::NodeFactory(string("nodo16")).set_type(0).getNode());
 	g.add_node(Node::NodeFactory(string("nodo17")).set_type(1).getNode());
-	g.add_node(Node::NodeFactory(string("nodo18")).set_type(2).getNode());
+	g.add_node(Node::NodeFactory(string("nodo18")).set_type(2).getNode());*/
 
-	g.add_contact(string("nodo0"), string("nodo1"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo1"), string("nodo2"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo5"), string("nodo1"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo4"), string("nodo1"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo2"), string("nodo4"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo2"), string("nodo3"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo3"), string("nodo4"), 2, 1.2, string("2021-02-02 23:59"));
+	g.add_contact(string("nodo0"), string("nodo1"), 0.1, 10, string("2021-02-02 23:59"));
+	g.add_contact(string("nodo1"), string("nodo2"), 0.5, 3, string("2021-02-02 23:59"));
+	g.add_contact(string("nodo2"), string("nodo3"), 1, 1, string("2021-02-02 23:59"));
+	g.add_contact(string("nodo3"), string("nodo4"), 0.1, 3, string("2021-02-02 23:59"));
+	//g.add_contact(string("nodo1"), string("nodo2"), 1, 1.2, string("2021-02-02 23:59"));
 
-	g.add_contact(string("nodo3"), string("nodo4"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo5"), string("nodo4"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo5"), string("nodo6"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo5"), string("nodo7"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo4"), string("nodo8"), 2, 1.2, string("2021-02-02 23:59"));
-	g.add_contact(string("nodo4"), string("nodo9"), 2, 1.2, string("2021-02-02 23:59"));
-
-	g.add_contact(string("nodo6"), string("nodo0"), 2, 1.2, string("2021-02-02 23:59"));
 	writeToFile();
 
 
 
 	g.mark_infected(string("nodo0"), 1);
-	g.mark_infected(string("nodo4"), 1);
+	//g.mark_infected(string("nodo4"), 1);
 
-	SimpleRule *sr = new SimpleRule();
+	ComplexRule *sr = new ComplexRule();
 	g.apply_rule(((Rule*)sr));
 
 	//g.print_node(string("nodo7"), cout);
 
+	//cout << Normal::chance_between(1, 2, 0, 2);
+
 	cout << g << endl;
+
+	print_chance("nodo0");
+	print_chance("nodo1");
+	print_chance("nodo2");
+	print_chance("nodo3");
+	print_chance("nodo4");
+
 	//cout << g.is_contact(string("nodoB"), string("nodo1")) << endl;
 
 	return 0;

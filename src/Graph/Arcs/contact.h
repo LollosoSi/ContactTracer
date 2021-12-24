@@ -135,6 +135,10 @@ public:
 		ids=nullptr;
 	}
 
+	float get_distance(){return distance;}
+	float get_exposure(){return exposure;}
+	std::string get_date(){return date;}
+
 protected:
 	// Meters
 	float distance = 0;
