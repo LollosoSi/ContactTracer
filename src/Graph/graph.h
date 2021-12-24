@@ -53,7 +53,9 @@ public:
 	 *
 	 */
 	void mark_infected(std::string ID, bool infected) {
-		find_node(ID)->set_infected(infected);
+		Node *n = find_node(ID);
+		if(n)
+			n->set_infected(infected);
 	}
 
 	/** Adds a new node to graph
@@ -85,7 +87,7 @@ public:
 
 	// TODO: Complete deserialization
 	friend std::istream& operator>>(std::istream &in, Graph &g) {
-		std::string data = "";
+		g.delete_all_nodes();
 
 		while (!in.eof()) {
 			Node *n = Node::NodeFactory().getNode();

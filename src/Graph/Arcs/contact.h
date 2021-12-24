@@ -132,6 +132,7 @@ public:
 		first = *ids->get_node_pointer(0);
 		second = *ids->get_node_pointer(1);
 		delete ids;
+		ids=nullptr;
 	}
 
 protected:

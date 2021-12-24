@@ -30,19 +30,18 @@ void readFile(){
 
 int main() {
 
-/*
-	g.add_node(Node::NodeFactory(string("nodo0")).set_type(0).getNode());
-	g.add_node(Node::NodeFactory(string("nodo1")).set_type(1).set_infection_chance(0.5).getNode());
-	g.add_node(Node::NodeFactory(string("nodo2")).set_infection_chance(0.3).set_type(2).getNode());
-
-	g.add_contact(string("nodo1"), string("nodo2"), 2, 1.2, string("2021-02-02 23:59"));
-	writeToFile();
-	*/
 	readFile();
-	cout << g << endl;
+	g.add_node(Node::NodeFactory(string("nodoA")).set_type(0).getNode());
+	g.add_node(Node::NodeFactory(string("nodoB")).set_type(1).set_infection_chance(0.5).getNode());
+	g.add_node(Node::NodeFactory(string("nodoC")).set_infection_chance(0.3).set_type(2).getNode());
 
-	g.delete_all_nodes();
-	cout << g;
+	g.add_contact(string("nodo1"), string("nodoB"), 2, 1.2, string("2021-02-02 23:59"));
+	writeToFile();
+
+
+	g.mark_infected(string("nodo2"), 1);
+	cout << g << endl;
+	cout << g.is_contact(string("nodoB"), string("nodo1")) << endl;
 
 	return 0;
 }

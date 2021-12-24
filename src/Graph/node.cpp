@@ -24,7 +24,7 @@ bool member(list<Contact*> cc, Contact *c) {
 Contact* Node::find_link(Node *n) const {
 	list<Contact*>::const_iterator it = this->contacts.begin();
 	while (it != this->contacts.end()) {
-		if ((*it)->get_other_node(n) == n)
+		if ((*it)->get_other_node(n) == this)
 			return *it;
 		it++;
 	}

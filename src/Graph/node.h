@@ -122,7 +122,7 @@ public:
 	 * @returns true if link with such node exists
 	 */
 	bool is_contact(Node *n) const {
-		return find_link(n);
+		return find_link(n)!=nullptr;
 	}
 
 	// TODO: complete implementation & deserialization
@@ -195,11 +195,14 @@ public:
 		}
 
 		(**inside_iterator).sync_temp_id();
+		(**inside_iterator).second->add_contact(*inside_iterator);
 		inside_iterator++;
 
 		if (inside_iterator == contacts.end()) {
 			*tid = nullptr;
 			return;
+		}else{
+			*tid = (**inside_iterator).get_temp_id();
 		}
 	}
 
