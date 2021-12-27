@@ -37,7 +37,7 @@ void SimpleRule::calc(Contact &c) {
 void ComplexRule::calc(Contact &c) {
 	Node *h = higher_chance_node(c);
 	if (h) {
-		float ifc = h->get_infection_chance() * Normal::chance_between(0,c.get_exposure(), 2, 2) * Exponential::instant_chance(c.get_distance(), 1.2);
+		float ifc = h->get_infection_chance() * Normal::chance_between(0,c.get_exposure(), 2, 2) * Exponential::chance_between(c.get_distance(), 10, 1.2);
 		if (c.get_other_node(h)->get_infection_chance() < ifc && ifc > 0.01f) {
 			c.get_other_node(h)->set_infection_chance(ifc);
 			//std::cout << "Setting ifc of " << c.get_other_node(h)->get_id() << " of " << ifc << std::endl;
@@ -45,3 +45,15 @@ void ComplexRule::calc(Contact &c) {
 		}
 	}
 }
+
+void DistanceRule::calc(Contact &c){
+		// removing 0.01 for each node counts as distance
+		Node *h = higher_chance_node(c);
+		if(h){
+			float ifc = h->get_infection_chance() - 0.01f;
+			if(ifc > 0 && c.get_other_node(h)->get_infection_chance() < ifc){
+				c.get_other_node(h)->set_infection_chance(ifc);
+				calculate_node(c.get_other_node(h));
+			}
+		}
+	}

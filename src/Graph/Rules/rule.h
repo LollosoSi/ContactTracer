@@ -23,7 +23,7 @@ public:
 	/**	Calculates and assigns actual node infection chance
 	 *  Recursive
 	 */
-	virtual void calc(Contact &c) = 0;
+	virtual void calc(Contact &c){}
 	virtual void calculate_node(Node *n) {
 		std::list<Contact*>::const_iterator ci =
 				n->get_contact_constant_iterator_begin();
@@ -52,4 +52,10 @@ public:
 	}
 	virtual ~ComplexRule() {};
 	void calc(Contact &c);
+};
+
+class DistanceRule : public Rule{
+
+	void calc (Contact &c);
+
 };

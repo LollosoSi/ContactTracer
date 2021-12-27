@@ -394,7 +394,6 @@ protected:
 	}
 
 private:
-	friend void Rule();
 
 	/** Contact list */
 	list<Contact*> contacts;

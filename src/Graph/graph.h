@@ -40,6 +40,8 @@ public:
 	 */
 	void add_contact(std::string ID1, std::string ID2, float distance,
 			float exposure, std::string date);
+	void add_contact(std::string ID1, std::string ID2, float distance,
+			float exposure, std::string date, Rule *r);
 
 	/**
 	 * @brief Deletes a contact from both nodes and memory
@@ -55,8 +57,16 @@ public:
 	 */
 	void mark_infected(std::string ID, bool infected) {
 		Node *n = find_node(ID);
-		if (n)
+		if (n) {
 			n->set_infected(infected);
+		}
+	}
+	void mark_infected(std::string ID, bool infected, Rule *r) {
+		Node *n = find_node(ID);
+		if (n) {
+			n->set_infected(infected);
+			r->calculate_node(n);
+		}
 	}
 
 	/** Adds a new node to graph
@@ -96,7 +106,7 @@ public:
 		return out;
 	}
 
-	void print_node(std::string ID, std::ostream &out){
+	void print_node(std::string ID, std::ostream &out) {
 		out << *find_node(ID);
 	}
 
@@ -149,9 +159,9 @@ public:
 	/**
 	 *  @returns selected node infection chance
 	 */
-	float get_node_infection_chance(std::string ID){
+	float get_node_infection_chance(std::string ID) {
 		Node *n = find_node(ID);
-		return n?n->get_infection_chance():0;
+		return n ? n->get_infection_chance() : 0;
 	}
 
 protected:

@@ -35,6 +35,17 @@ Node* Graph::find_node(std::string ID) const {
 }
 
 void Graph::add_contact(std::string ID1, std::string ID2, float distance,
+		float exposure, std::string date, Rule *r) {
+	Node *n1 = find_node(ID1), *n2 = find_node(ID2);
+	if ((n1!=nullptr) && (n2!=nullptr)) {
+		n1->add_or_update(n2, distance, exposure, date);
+		r->calculate_node(n1);
+	} else {
+		// Nodes not on the graph! Contact is not valid.
+	}
+}
+
+void Graph::add_contact(std::string ID1, std::string ID2, float distance,
 		float exposure, std::string date) {
 	Node *n1 = find_node(ID1), *n2 = find_node(ID2);
 	if ((n1!=nullptr) && (n2!=nullptr)) {
