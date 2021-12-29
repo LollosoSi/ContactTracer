@@ -97,8 +97,7 @@ public:
 	/* Nodes to be linked */
 	Node *first = nullptr, *second = nullptr;
 
-	// TODO: complete implementation & deserialization
-	// TODO: Save & reconvert node ID to Pointers
+	// TODO: Add javadoc
 	friend ostream& operator <<(ostream &out, const Contact &c) {
 		out << (c.distance) << divider_contact << (c.exposure) << divider_contact << (c.date);
 		return out;

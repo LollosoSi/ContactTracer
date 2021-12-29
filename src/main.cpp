@@ -41,8 +41,6 @@ Rule *rule = new SimpleRule();
 int main() {
 
 
-
-
 	//readFile();
 	char* buf = new char[10];
 	for(int i = 1; i < 21; i++){
