@@ -36,7 +36,7 @@ void print_chance(string node){
 }
 
 
-Rule *rule = new ComplexRule();
+Rule *rule = new SimpleRule();
 
 int main() {
 
