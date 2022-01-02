@@ -9,9 +9,13 @@
 
 #include <cmath>
 
+class ChanceFunction{
+public:
+	ChanceFunction(){}
+	virtual ~ChanceFunction(){}
+};
 
-
-class Normal{
+class Normal : public ChanceFunction {
 public:
 	/** Calculates chance at X using Gaussian function
 	 * @param x indipendent variable
@@ -32,7 +36,7 @@ public:
 	}
 };
 
-class Exponential{
+class Exponential : public ChanceFunction {
 public:
 	/** Calculates chance at X using Gaussian function
 	 * @param x indipendent variable

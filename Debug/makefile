@@ -61,7 +61,7 @@ main-build: ContactTracer.exe
 ContactTracer.exe: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MinGW C++ Linker'
-	g++  -o "ContactTracer.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -static-libgcc -static-libstdc++ -o "ContactTracer.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
