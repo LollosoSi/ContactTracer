@@ -43,6 +43,8 @@ void ComplexRule::calc(Contact &c) {
 			//std::cout << "Setting ifc of " << c.get_other_node(h)->get_id() << " of " << ifc << std::endl;
 			calculate_node(c.get_other_node(h));
 		}
+	}else{
+		std::cout << "It appears that a contact is corrupted.\n";
 	}
 }
 

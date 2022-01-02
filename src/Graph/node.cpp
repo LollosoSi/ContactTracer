@@ -32,7 +32,7 @@ Contact* Node::find_link(Node *n) const {
 }
 
 void Node::add_contact(Contact *c) {
-	if (!member(contacts, c))
+	if (!find_link(c->get_other_node(this)))
 		contacts.push_back(c);
 }
 

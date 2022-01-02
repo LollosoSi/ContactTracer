@@ -23,11 +23,11 @@ public:
 	/**	Calculates and assigns actual node infection chance
 	 *  Recursive
 	 */
-	virtual void calc(Contact &c){}
+	virtual void calc(Contact &c){std::cout << "Classic calc" << std::endl;}
 	virtual void calculate_node(Node *n) {
-		std::list<Contact*>::const_iterator ci =
-				n->get_contact_constant_iterator_begin();
+		std::list<Contact*>::const_iterator ci = n->get_contact_constant_iterator_begin();
 		while (ci != n->get_contact_constant_iterator_end()) {
+			//std::cout << n->get_id() << " -> " << (**ci).get_other_node(n)->get_id() << std::endl;
 			calc((**ci));
 			ci++;
 		}

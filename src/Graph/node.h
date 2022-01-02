@@ -133,7 +133,7 @@ public:
 		while (it != n.contacts.end()) {
 
 			// Node is added only if the node being printed is first, in order to save memory
-			if ((*it)->get_node(0) == &n || true) {
+			if ((*it)->get_node(0) == &n) {
 				out << divider_node;
 				out << **it;
 
