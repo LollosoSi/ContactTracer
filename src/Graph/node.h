@@ -210,32 +210,36 @@ public:
 	/** Ensures no changes can be done over contacts
 	 *	NOTE: Might need a different implementation
 	 */
-	list<Contact*>::const_iterator get_contact_constant_iterator_begin(){return contacts.begin();}
-	list<Contact*>::const_iterator get_contact_constant_iterator_end(){return contacts.end();}
+	list<Contact*>::const_iterator get_contact_constant_iterator_begin() {
+		return contacts.begin();
+	}
+	list<Contact*>::const_iterator get_contact_constant_iterator_end() {
+		return contacts.end();
+	}
 
 	/* Unused code. Replaced with get_contact_constant_iterator
-	list<Contact*>::iterator inside_iterator_contacts;
-	void get_next_contact(Contact **c) {
-		if (*c == nullptr) {
-			inside_iterator_contacts = contacts.begin();
-			if (inside_iterator_contacts == contacts.end())
-				*c = nullptr;
-			else
-				*c = (*inside_iterator_contacts);
-			return;
-		}
+	 list<Contact*>::iterator inside_iterator_contacts;
+	 void get_next_contact(Contact **c) {
+	 if (*c == nullptr) {
+	 inside_iterator_contacts = contacts.begin();
+	 if (inside_iterator_contacts == contacts.end())
+	 *c = nullptr;
+	 else
+	 *c = (*inside_iterator_contacts);
+	 return;
+	 }
 
 
-		inside_iterator_contacts++;
+	 inside_iterator_contacts++;
 
-		if (inside_iterator_contacts == contacts.end()) {
-			*c = nullptr;
-			return;
-		} else {
-			*c = (*inside_iterator_contacts);
-		}
-	}
-	*/
+	 if (inside_iterator_contacts == contacts.end()) {
+	 *c = nullptr;
+	 return;
+	 } else {
+	 *c = (*inside_iterator_contacts);
+	 }
+	 }
+	 */
 
 	/**  Constructor of Node object
 	 * 	@brief Allows for faster building of a Node object and must be used to ensure compatibility
@@ -295,11 +299,23 @@ public:
 			n->set_infection_chance(infection_chance);
 			return n;
 		}
+
 	private:
 		std::string id = "";
 		unsigned int type = 0;
 		float infection_chance = 0;
 	};
+
+	/** Pretty prints contact data to ostream */
+	void print_contact(Node *n, std::ostream &out) {
+		Contact *c = find_link(n);
+		if (c) {
+			out << c->get_exposure() << " minutes at " << c->get_distance()
+					<< " meters on " << c->get_date() << std::endl;
+		} else {
+			out << "Not in contact." << std::endl;
+		}
+	}
 
 	/**
 	 * @brief Creates and adds a contact to pointer contact list, for both nodes
@@ -313,7 +329,6 @@ public:
 	void add_contact(Node *n, float exposure, float distance, string date) {
 		//Contact *c = new Contact(distance, exposure, date, this, n); add_contact(c); n->add_contact(c);
 	}
-
 
 protected:
 

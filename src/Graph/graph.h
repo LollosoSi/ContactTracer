@@ -92,6 +92,22 @@ public:
 		return n1 && n2 ? (n1->is_contact(n2)) : false;
 	}
 
+	/** Pretty prints contact information if available
+	 *
+	 */
+	void print_contact(std::string ID1, std::string ID2, std::ostream &out){
+		Node *n1 = find_node(ID1), *n2 = find_node(ID2);
+		if(n1 && n2)
+			n1->print_contact(n2, out);
+		else
+			out << "No contact" << endl;
+	}
+
+	/** Checks if node exists inside graph
+	 *
+	 */
+	bool node_exists(std::string ID){return find_node(ID) != nullptr;}
+
 	/**
 	 *  @brief Serialization to ostream object Format: {Node}+{Contact:1}+{FirstNodeContact:1}+{SecondNodeContact:1}+{Contact:2}+{FirstNodeContact:2}+{SecondNodeContact:2}
 	 */
