@@ -55,7 +55,9 @@ public:
 };
 
 class DistanceRule : public Rule{
-
 	void calc (Contact &c);
+};
 
+class ResetRule : public Rule{
+	void calc (Contact &c);
 };

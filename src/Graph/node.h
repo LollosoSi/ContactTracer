@@ -152,7 +152,15 @@ public:
 		char line[1500];
 		char *data;
 		unsigned int cursor = 0;
+
 		in.getline(line, 1500);
+
+		// We can't extract data from an empty string. As such, we'll leave an empty node that will be deleted later
+		if(std::strlen(line)==0){
+			n.id = string("");
+
+			return in;
+		}
 
 		data = std::strtok(line, divider_node);
 		n.id = string(data);

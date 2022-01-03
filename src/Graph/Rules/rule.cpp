@@ -12,7 +12,8 @@
  *  @param c Contact object where to search for higher chance node
  */
 Node* higher_chance_node(Contact &c) {
-	return (c.first->get_infection_chance() == c.second->get_infection_chance()) ? nullptr :
+	return (c.first->get_infection_chance() == c.second->get_infection_chance()) ?
+			c.first :
 			c.first->get_infection_chance() > c.second->get_infection_chance() ?
 					c.first : c.second;
 }
@@ -37,25 +38,39 @@ void SimpleRule::calc(Contact &c) {
 void ComplexRule::calc(Contact &c) {
 	Node *h = higher_chance_node(c);
 	if (h) {
-		float ifc =  h->get_infection_chance() * Normal::chance_between(0,c.get_exposure(), 2, 2) * Exponential::chance_between(c.get_distance(), 10, 1.2);
+		float ifc = h->get_infection_chance()
+				* Normal::chance_between(0, c.get_exposure(), 2, 2)
+				* Exponential::chance_between(c.get_distance(), 10, 1.2);
 		if (c.get_other_node(h)->get_infection_chance() < ifc && ifc > 0.01f) {
 			c.get_other_node(h)->set_infection_chance(ifc);
 			//std::cout << "Setting ifc of " << c.get_other_node(h)->get_id() << " of " << ifc << std::endl;
 			calculate_node(c.get_other_node(h));
 		}
-	}else{
-		std::cout << "It appears that a contact is corrupted.\n";
+	} else {
+		std::cout << "It appears that a contact is corrupted." << (c.first ? c.first->get_id() : "corrotto") << " - " << (c.second ? c.second->get_id() : "corrotto") << "\n";
 	}
 }
 
-void DistanceRule::calc(Contact &c){
-		// removing 0.01 for each node counts as distance
-		Node *h = higher_chance_node(c);
-		if(h){
-			float ifc = h->get_infection_chance() - 0.01f;
-			if(ifc > 0 && c.get_other_node(h)->get_infection_chance() < ifc){
-				c.get_other_node(h)->set_infection_chance(ifc);
-				calculate_node(c.get_other_node(h));
-			}
+void DistanceRule::calc(Contact &c) {
+	// removing 0.01 for each node counts as distance
+	Node *h = higher_chance_node(c);
+	if (h) {
+		float ifc = h->get_infection_chance() - 0.01f;
+		if (ifc > 0 && c.get_other_node(h)->get_infection_chance() < ifc) {
+			c.get_other_node(h)->set_infection_chance(ifc);
+			calculate_node(c.get_other_node(h));
 		}
 	}
+}
+
+void ResetRule::calc(Contact &c) {
+	Node *h = c.first;
+	if (h)
+		if (h->get_infection_chance() != 0) {
+			if (h->get_infection_chance() != 1)
+				h->set_infection_chance(0);
+			if (c.get_other_node(h))
+				if (c.get_other_node(h)->get_infection_chance() != 0)
+					this->calculate_node(c.get_other_node(h));
+		}
+}

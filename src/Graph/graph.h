@@ -135,7 +135,8 @@ public:
 		while (!in.eof()) {
 			Node *n = Node::NodeFactory().getNode();
 			in >> *n;
-			g.add_node(n);
+			if(n->get_id() != string("")) g.add_node(n);
+			else delete n;
 		}
 
 		list<Node*>::iterator it = g.nodes.begin();
@@ -179,6 +180,18 @@ public:
 		Node *n = find_node(ID);
 		return n ? n->get_infection_chance() : 0;
 	}
+
+
+	/** Pretty prints chance of all nodes to ostream */
+	void printall(std::ostream &out) {
+		list<Node*>::iterator it = nodes.begin();
+		while (it != nodes.end()) {
+			cout << "Infection chance of " << (**it).get_id() << " is "
+					<< ((**it).get_infection_chance() * 100) << "%\n";
+			it++;
+		}
+	}
+
 
 protected:
 
