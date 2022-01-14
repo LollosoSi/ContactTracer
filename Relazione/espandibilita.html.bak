@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>E-spandibilità</title>
+
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+.ct{
+display:flex;
+flex-flow:wrap;
+}
+
+.mdc-card{
+flex:2 1 auto;
+min-width:200px;
+margin: 1%;
+padding: 1%;
+display:inline-block;
+}
+
+h3{
+margin-left:20px;
+}
+span{
+
+margin-left:20px;
+display:inline-block;
+white-space: break-spaces;
+min-width:100px;
+}
+</style>
+
+</head>
+
+<body>
+<h2>Spunti di espandibilità del progetto</h2>
+<div class="ct">
+
+<div class="mdc-card" >
+<h3>Grafo multidimensionale</h3><span>Si può costruire una rete 3D utilizzando più grafi e collegandoli tramite nodi in comune (esempio: nodi con lo stesso ID). In questo modo un grafo può espandersi lateralmente e in altezza, permettendo anche la suddivisione e calcolo modulare per risparmiare memoria e potenza di calcolo! </span>
+</div>
+
+<div class="mdc-card" >
+<h3>Grafo multiutente</h3><span>È possibile estendere l'implementazione fornendo un'interfaccia utente (tramite pagina web interattiva o programmando un bot per telegram ad esempio) in cui confluire tutti i dati dei singoli utenti, creando grafi separati e permettendo alle persone di effettuare delle stime secondo la loro situazione particolare di emergenza. Utilizzando l'idea del <b>"Grafo multidimensionale"</b> si può permettere agli utenti di collegare i nodi tra i loro grafi. </span>
+</div>
+
+<div class="mdc-card" >
+<h3>Disegnatore di Grafo</h3><span>Un'estensione interessante consiste nel collegarsi all'oggetto grafo al fine di disegnare l'oggetto stesso navigando i nodi che lo compongono e fornendo in uscita un'interfaccia interattiva oppure un'immagine con calcoli e colori applicati.</span>
+</div>
+
+</div>
+</body>
+
+</html>

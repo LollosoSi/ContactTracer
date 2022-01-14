@@ -9,19 +9,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
-
 .ct{
 display:flex;
 flex-flow:wrap;
 }
 
-.mdc-card{flex:1; min-width:350px; min-height:20px; margin-left:20px; magin-right:20px; margin:auto; padding:20px; padding-bottom:30px; display:inline-block;}
+.mdc-card{
+flex:2 1 auto;
+min-width:200px;
+margin: 1%;
+padding: 1%;
+display:inline-block;
+}
 
 h3{
 margin-left:20px;
 }
 span{
-margin-left:40px;
+
+margin-left:20px;
+display:inline-block;
 white-space: break-spaces;
 min-width:100px;
 }
