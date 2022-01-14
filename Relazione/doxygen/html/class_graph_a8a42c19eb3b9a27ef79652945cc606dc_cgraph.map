@@ -1,0 +1,8 @@
+<map id="Graph::delete_contact" name="Graph::delete_contact">
+<area shape="rect" id="node1" title="Deletes a contact from both nodes and memory." alt="" coords="5,56,156,83"/>
+<area shape="rect" id="node2" href="$class_node.html#a3267df09c569574dc3c98a354d56ca1c" title=" " alt="" coords="204,49,349,90"/>
+<area shape="rect" id="node3" href="$class_node.html#aad23aab6a9886b285ef8aa2925d265eb" title=" " alt="" coords="397,31,575,57"/>
+<area shape="rect" id="node6" href="$class_node.html#aade7b097d344b5458220c6a5f532e11b" title=" " alt="" coords="433,81,539,108"/>
+<area shape="rect" id="node4" href="$class_node.html#a1fe10a604581f7ac17dc93f8ee6f9ed2" title=" " alt="" coords="632,5,777,32"/>
+<area shape="rect" id="node5" href="$class_contact.html#a110d53ffe78646ab489e712819459c6a" title=" " alt="" coords="623,56,787,83"/>
+</map>

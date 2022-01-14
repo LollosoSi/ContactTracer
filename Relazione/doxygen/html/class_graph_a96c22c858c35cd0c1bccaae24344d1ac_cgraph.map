@@ -1,0 +1,9 @@
+<map id="Graph::mark_infected" name="Graph::mark_infected">
+<area shape="rect" id="node1" title=" " alt="" coords="5,115,152,141"/>
+<area shape="rect" id="node2" href="$class_rule.html#a4a84bbda4e87885ab514ed10307935cc" title=" " alt="" coords="200,64,343,91"/>
+<area shape="rect" id="node6" href="$class_graph.html#a49efa61e14c299ed3ef000a6c7fa082e" title=" " alt="" coords="211,115,331,141"/>
+<area shape="rect" id="node7" href="$class_node.html#aeabcc79fa0201eba08e3d61affa72f1b" title="Mark node as infected or clean @desc Marks node as infected or clean. Sets infection chance to either..." alt="" coords="206,165,337,192"/>
+<area shape="rect" id="node3" href="$class_rule.html#a56540f772be7b22ec4b1f8d8d38be21c" title=" " alt="" coords="443,5,523,32"/>
+<area shape="rect" id="node4" href="$class_node.html#a35d0f5afc420c2e88cb138e396088c1c" title=" " alt="" coords="391,57,576,98"/>
+<area shape="rect" id="node5" href="$class_node.html#aa1f0c0f6518ea5806dec76d6ec6d099d" title=" " alt="" coords="391,122,576,163"/>
+</map>
