@@ -1,0 +1,5 @@
+<map id="Node::NodeFactory::getNode" name="Node::NodeFactory::getNode">
+<area shape="rect" id="node1" title=" " alt="" coords="5,27,148,69"/>
+<area shape="rect" id="node2" href="$class_node.html#ad7a34779cad45d997bfd6d3d8043c75f" title="Empty constructor of class NOTE: This object must be instanced from a NodeFactory object." alt="" coords="217,5,308,32"/>
+<area shape="rect" id="node3" href="$class_node.html#ae653e5265823d0eb583e94fc0d856064" title="sets infection chance" alt="" coords="196,57,329,98"/>
+</map>

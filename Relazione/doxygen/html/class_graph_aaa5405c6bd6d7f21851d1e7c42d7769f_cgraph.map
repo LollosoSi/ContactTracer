@@ -1,0 +1,5 @@
+<map id="Graph::delete_all_nodes" name="Graph::delete_all_nodes">
+<area shape="rect" id="node1" title="Correctly frees memories of all nodes and insides." alt="" coords="5,29,168,56"/>
+<area shape="rect" id="node2" href="$class_graph.html#a7a7fde2237e730acb2e2e18f765efbf3" title=" " alt="" coords="216,29,351,56"/>
+<area shape="rect" id="node3" href="$class_graph.html#a49efa61e14c299ed3ef000a6c7fa082e" title=" " alt="" coords="399,29,519,56"/>
+</map>
