@@ -5,8 +5,7 @@
  *      Author: arocc
  */
 
-#ifndef GRAPH_RULES_ENUM_H_
-#define GRAPH_RULES_ENUM_H_
+#pragma once
 
 /** Used for serialization/deserialization */
 static const char* divider_node = "+";
@@ -18,5 +17,3 @@ enum nodetype{
 	building = 2
 };
 
-
-#endif /* GRAPH_RULES_ENUM_H_ */

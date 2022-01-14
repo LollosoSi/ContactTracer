@@ -39,7 +39,7 @@ public:
 	 * 	@returns Node type from enum
 	 * 	@author andrea
 	 */
-	virtual unsigned int get_type() const {
+	inline virtual unsigned int get_type() const {
 		return type;
 	}
 
@@ -47,26 +47,20 @@ public:
 	 * 	@returns Infection chance of node. Range [0.0 to 1.0]
 	 * 	@author Andrea
 	 */
-	float get_infection_chance() const {
+	inline float get_infection_chance() const {
 		return infection_chance;
 	}
 
 	/** @brief sets infection chance
 	 * 	@author Andrea
 	 */
-	void set_infection_chance(float infection_chance) {
-		this->infection_chance =
-				infection_chance > 1.0f ? 1 :
-				infection_chance < 0.0f ? 0 : infection_chance;
-	}
+	void set_infection_chance(float infection_chance);
 
 	/**	@brief Mark node as infected or clean
 	 * 	@desc Marks node as infected or clean. Sets infection chance to either 0 or 1
 	 * 	@author Andrea
 	 */
-	void set_infected(bool infected) {
-		infection_chance = infected ? 1 : 0;
-	}
+	void set_infected(bool infected);
 
 	/* Recursive calls for infection propagation using Rule parameter and contacts list
 	 * 	NOTE: Invalid approach.
@@ -83,7 +77,7 @@ public:
 	 }*/
 
 	/** Returns node ID */
-	std::string get_id() const {
+	inline std::string get_id() const {
 		return id;
 	}
 
@@ -97,7 +91,7 @@ public:
 	/** Removes contact from list by giving second node
 	 *	@param n Node to be disconnected
 	 */
-	void delete_contact_with_both(Node *n) {
+	inline void delete_contact_with_both(Node *n) {
 		delete_contact_both(find_link(n));
 	}
 
@@ -107,21 +101,12 @@ public:
 	void delete_all_contacts_both();
 
 	void add_or_update(Node *n, float distance, float exposure,
-			std::string date) {
-		Contact *c = find_link(n);
-		if (!c) {
-			c = new Contact(distance, exposure, date, this, n);
-			add_contact(c);
-			n->add_contact(c);
-		} else {
-			c->update(distance, exposure, date);
-		}
-	}
+			std::string date);
 
 	/**
 	 * @returns true if link with such node exists
 	 */
-	bool is_contact(Node *n) const {
+	inline bool is_contact(Node *n) const {
 		return find_link(n) != nullptr;
 	}
 
@@ -156,7 +141,7 @@ public:
 		in.getline(line, 1500);
 
 		// We can't extract data from an empty string. As such, we'll leave an empty node that will be deleted later
-		if(std::strlen(line)==0){
+		if (std::strlen(line) == 0) {
 			n.id = string("");
 
 			return in;
@@ -193,35 +178,15 @@ public:
 	}
 
 	list<Contact*>::iterator inside_iterator;
-	void get_next_tempid(Contact::TempID **tid) {
-		if (*tid == nullptr) {
-			inside_iterator = contacts.begin();
-			if (inside_iterator == contacts.end())
-				*tid = nullptr;
-			else
-				*tid = (**inside_iterator).get_temp_id();
-			return;
-		}
-
-		(**inside_iterator).sync_temp_id();
-		(**inside_iterator).second->add_contact(*inside_iterator);
-		inside_iterator++;
-
-		if (inside_iterator == contacts.end()) {
-			*tid = nullptr;
-			return;
-		} else {
-			*tid = (**inside_iterator).get_temp_id();
-		}
-	}
+	void get_next_tempid(Contact::TempID **tid);
 
 	/** Ensures no changes can be done over contacts
 	 *	NOTE: Might need a different implementation
 	 */
-	list<Contact*>::const_iterator get_contact_constant_iterator_begin() {
+	list<Contact*>::const_iterator get_contact_constant_iterator_begin() const {
 		return contacts.begin();
 	}
-	list<Contact*>::const_iterator get_contact_constant_iterator_end() {
+	list<Contact*>::const_iterator get_contact_constant_iterator_end() const {
 		return contacts.end();
 	}
 
@@ -278,7 +243,7 @@ public:
 		 * @param type Value from enum
 		 * @returns self
 		 */
-		NodeFactory set_type(unsigned int type) {
+		inline NodeFactory set_type(unsigned int type) {
 			this->type = type;
 			return *this;
 		}
@@ -286,7 +251,7 @@ public:
 		 *	@param id unique string
 		 *	@returns self
 		 */
-		NodeFactory set_id(std::string id) {
+		inline NodeFactory set_id(std::string id) {
 			this->id = id;
 			return *this;
 		}
@@ -294,7 +259,7 @@ public:
 		/** Sets infection chance of future node
 		 *	@returns self
 		 */
-		NodeFactory set_infection_chance(float chance) {
+		inline NodeFactory set_infection_chance(float chance) {
 			this->infection_chance = chance;
 			return *this;
 		}
@@ -302,7 +267,7 @@ public:
 		/**
 		 * @returns new node instance with the specified parameters
 		 */
-		Node* getNode() {
+		inline Node* getNode() {
 			Node *n = new Node(id, type);
 			n->set_infection_chance(infection_chance);
 			return n;
@@ -315,15 +280,7 @@ public:
 	};
 
 	/** Pretty prints contact data to ostream */
-	void print_contact(Node *n, std::ostream &out) {
-		Contact *c = find_link(n);
-		if (c) {
-			out << c->get_exposure() << " minutes at " << c->get_distance()
-					<< " meters on " << c->get_date() << std::endl;
-		} else {
-			out << "Not in contact." << std::endl;
-		}
-	}
+	void print_contact(Node *n, std::ostream &out) const;
 
 	/**
 	 * @brief Creates and adds a contact to pointer contact list, for both nodes
@@ -336,6 +293,7 @@ public:
 	 */
 	void add_contact(Node *n, float exposure, float distance, string date) {
 		//Contact *c = new Contact(distance, exposure, date, this, n); add_contact(c); n->add_contact(c);
+		std::cerr << "Use of deprecated function.\nPlease use the Graph object in order to create contacts.\n";
 	}
 
 protected:
@@ -377,22 +335,14 @@ protected:
 	 * 	NOTE: Protected function due to Encapsulation practices
 	 *	@param c Contact to be removed
 	 */
-	void delete_contact(Contact *c) {
-		this->contacts.remove(c);
-	}
+	void delete_contact(Contact *c);
 
 	/** Removes contact from list
 	 * 	NOTE: Enclosed call
 	 * 	NOTE: Protected function due to Encapsulation practices
 	 *	@param c Contact to be removed
 	 */
-	void delete_contact_both(Contact *c) {
-		if (!c)
-			return; // can't delete null pointer
-		this->delete_contact(c);
-		c->get_other_node(this)->delete_contact(c);
-		c = nullptr;
-	}
+	void delete_contact_both(Contact *c);
 
 	/** Returns contact list
 	 *  NOTE: Bad practice, removed
@@ -412,7 +362,7 @@ protected:
 	 * 	@param type Value from enum to be set
 	 * 	@author Andrea
 	 */
-	virtual void set_type(unsigned int type) {
+	virtual inline void set_type(unsigned int type) {
 		this->type = type;
 	}
 

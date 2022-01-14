@@ -97,7 +97,9 @@ public:
 	/* Nodes to be linked */
 	Node *first = nullptr, *second = nullptr;
 
-	// TODO: Add javadoc
+	/**
+	 * @brief Prints out data to ostream (mainly meant for serialization)
+	 */
 	friend ostream& operator <<(ostream &out, const Contact &c) {
 		out << (c.distance) << divider_contact << (c.exposure) << divider_contact << (c.date);
 		return out;
@@ -125,8 +127,11 @@ public:
 		if(!ids) delete ids;
 		ids = new TempID(ID1, ID2);
 	}
-	TempID* get_temp_id(){return ids;}
+	TempID* get_temp_id() const {return ids;}
 
+	/** Gathers data from TempID object and deletes it
+	 * @brief used to sync serialized data with actual in memory data
+	 */
 	void sync_temp_id(){
 		first = *ids->get_node_pointer(0);
 		second = *ids->get_node_pointer(1);
@@ -134,9 +139,9 @@ public:
 		ids=nullptr;
 	}
 
-	float get_distance(){return distance;}
-	float get_exposure(){return exposure;}
-	std::string get_date(){return date;}
+	float get_distance() const {return distance;}
+	float get_exposure() const {return exposure;}
+	std::string get_date() const {return date;}
 
 protected:
 	// Meters

@@ -42,7 +42,7 @@ string commands[] = { "help", "contact", "c", "node", "chance", "mark", "rule",
  */
 string descriptions[] =
 		{ "This page.",
-				"Shows or adds contact info between two nodes. Adds a new node if one in the contact doesn't exist.\n\tFormat: \"contact <id node1> <id node2>\" to show contact info\n\tFormat: \"contact <id node1> <id node2> <distance> <exposure (minutes) > <date (yyyy-MM-dd hh:mm) >\" to add a new contact.",
+				"Shows or adds contact info between two nodes. Adds a new node if one in the contact doesn't exist.\n\tFormat: \"contact <id node1> <id node2>\" to show contact info\n\tFormat: \"contact <id node1> <id node2> <distance> <exposure (minutes) > <date (yyyy-MM-dd-hh:mm) >\" to add a new contact.",
 				"Shorthand for \"contact\"",
 				"Shows or adds node info to the Graph\n\tFormat: \"node <node id>\" to show data \n\tFormat: \"node <node id> <type>\" to add a node",
 				"Shows infection chance of a node. Type \"chance all\" to show all nodes",
@@ -64,6 +64,7 @@ void command_printall(Bundle args) {
 	g.printall(cout);
 }
 
+/** Saves data to file */
 void command_save(Bundle args) {
 	ofstream of;
 	of.open(args[1]);
@@ -170,8 +171,7 @@ int findindex(string s) {
 }
 
 /** Array of function pointers for commands */
-void (*functions[])(
-		Bundle args) = {command_help, command_contact, command_contact,
+void (*functions[])(Bundle args) = {command_help, command_contact, command_contact,
 			command_node, command_chance, command_mark,
 			command_rule, command_save, command_load,
 			command_printall, command_delcontact, command_delcontact,
