@@ -1,7 +1,0 @@
-<map id="Grafico della gerarchia delle classi" name="Grafico della gerarchia delle classi">
-<area shape="rect" id="node1" href="$class_rule.html" title=" " alt="" coords="5,81,53,108"/>
-<area shape="rect" id="node2" href="$class_complex_rule.html" title=" " alt="" coords="101,5,200,32"/>
-<area shape="rect" id="node3" href="$class_distance_rule.html" title=" " alt="" coords="101,56,200,83"/>
-<area shape="rect" id="node4" href="$class_reset_rule.html" title=" " alt="" coords="109,107,192,133"/>
-<area shape="rect" id="node5" href="$class_simple_rule.html" title=" " alt="" coords="107,157,195,184"/>
-</map>

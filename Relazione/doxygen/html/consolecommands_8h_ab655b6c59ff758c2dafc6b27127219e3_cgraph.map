@@ -1,7 +1,0 @@
-<map id="command_chance" name="command_chance">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,133,61"/>
-<area shape="rect" id="node2" href="$consolecommands_8h.html#a6bd9b7ab8341976b54c9d54c53f6f078" title=" " alt="" coords="181,35,277,61"/>
-<area shape="rect" id="node3" href="$class_graph.html#a61eff44ec84fb3c9eff988dd43c27510" title=" " alt="" coords="325,27,499,69"/>
-<area shape="rect" id="node4" href="$class_graph.html#a49efa61e14c299ed3ef000a6c7fa082e" title=" " alt="" coords="553,5,673,32"/>
-<area shape="rect" id="node5" href="$class_node.html#ab09462af6053c1910875b1a32f2e922a" title="Infection chance." alt="" coords="547,57,680,98"/>
-</map>

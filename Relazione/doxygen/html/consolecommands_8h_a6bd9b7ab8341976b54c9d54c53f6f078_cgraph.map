@@ -1,6 +1,0 @@
-<map id="print_chance" name="print_chance">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,101,61"/>
-<area shape="rect" id="node2" href="$class_graph.html#a61eff44ec84fb3c9eff988dd43c27510" title=" " alt="" coords="149,27,323,69"/>
-<area shape="rect" id="node3" href="$class_graph.html#a49efa61e14c299ed3ef000a6c7fa082e" title=" " alt="" coords="377,5,497,32"/>
-<area shape="rect" id="node4" href="$class_node.html#ab09462af6053c1910875b1a32f2e922a" title="Infection chance." alt="" coords="371,57,504,98"/>
-</map>

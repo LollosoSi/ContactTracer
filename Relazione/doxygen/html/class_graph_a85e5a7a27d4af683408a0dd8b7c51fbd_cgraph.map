@@ -1,9 +1,0 @@
-<map id="Graph::add_contact" name="Graph::add_contact">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,141,108"/>
-<area shape="rect" id="node2" href="$class_node.html#ae5c3cae1682fc954ddc92910f9b2c802" title=" " alt="" coords="189,56,335,83"/>
-<area shape="rect" id="node7" href="$class_graph.html#a49efa61e14c299ed3ef000a6c7fa082e" title=" " alt="" coords="202,107,322,133"/>
-<area shape="rect" id="node3" href="$class_node.html#a795d81007e603f29ee2df43c95c6c1df" title="Adds a contact to pointer contact list." alt="" coords="383,56,513,83"/>
-<area shape="rect" id="node4" href="$class_node.html#aade7b097d344b5458220c6a5f532e11b" title=" " alt="" coords="590,5,697,32"/>
-<area shape="rect" id="node6" href="$class_contact.html#a3919191bb7966087a88fbfb4e7dd0509" title="updates the basic components" alt="" coords="391,107,505,133"/>
-<area shape="rect" id="node5" href="$class_contact.html#a110d53ffe78646ab489e712819459c6a" title=" " alt="" coords="561,56,725,83"/>
-</map>

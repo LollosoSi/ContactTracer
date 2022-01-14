@@ -1,7 +1,0 @@
-<map id="Graph::apply_rule" name="Graph::apply_rule">
-<area shape="rect" id="node1" title="applies rule for each contact found in node and calculates infection chance" alt="" coords="5,64,129,91"/>
-<area shape="rect" id="node2" href="$class_rule.html#a4a84bbda4e87885ab514ed10307935cc" title=" " alt="" coords="177,64,320,91"/>
-<area shape="rect" id="node3" href="$class_rule.html#a56540f772be7b22ec4b1f8d8d38be21c" title=" " alt="" coords="421,5,501,32"/>
-<area shape="rect" id="node4" href="$class_node.html#a35d0f5afc420c2e88cb138e396088c1c" title=" " alt="" coords="368,57,553,98"/>
-<area shape="rect" id="node5" href="$class_node.html#aa1f0c0f6518ea5806dec76d6ec6d099d" title=" " alt="" coords="368,122,553,163"/>
-</map>

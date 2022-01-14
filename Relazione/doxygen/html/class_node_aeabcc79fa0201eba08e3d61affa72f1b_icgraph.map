@@ -1,5 +1,0 @@
-<map id="Node::set_infected" name="Node::set_infected">
-<area shape="rect" id="node1" title="Mark node as infected or clean @desc Marks node as infected or clean. Sets infection chance to either..." alt="" coords="363,5,493,32"/>
-<area shape="rect" id="node2" href="$class_graph.html#a61c0880ae24328ab6d8cb8f62633718d" title=" " alt="" coords="168,5,315,32"/>
-<area shape="rect" id="node3" href="$consolecommands_8h.html#a32bf8af916782cbdbe03c3b7862bc9e6" title=" " alt="" coords="5,5,120,32"/>
-</map>
