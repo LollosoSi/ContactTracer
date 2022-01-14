@@ -1,0 +1,18 @@
+<map id="ComplexRule::calc" name="ComplexRule::calc">
+<area shape="rect" id="node1" title=" " alt="" coords="5,380,136,407"/>
+<area shape="rect" id="node2" href="$class_rule.html#a4a84bbda4e87885ab514ed10307935cc" title=" " alt="" coords="197,96,339,123"/>
+<area shape="rect" id="node6" href="$class_exponential.html#ac607e270fad587704d609ca9e809fb45" title=" " alt="" coords="198,187,338,229"/>
+<area shape="rect" id="node8" href="$class_normal.html#ada7dd19d9b10ef0dedd19f733039a0d3" title=" " alt="" coords="184,253,352,280"/>
+<area shape="rect" id="node10" href="$class_contact.html#a62235acb9be9ca0b9f012be023f32565" title=" " alt="" coords="193,304,343,331"/>
+<area shape="rect" id="node11" href="$class_contact.html#aaab483c1982cf9b2e893802f4d590cc5" title=" " alt="" coords="191,355,345,381"/>
+<area shape="rect" id="node12" href="$class_node.html#aa9d8b3b2e5eec65ef595ffd014708a17" title=" " alt="" coords="221,405,315,432"/>
+<area shape="rect" id="node13" href="$class_node.html#ab09462af6053c1910875b1a32f2e922a" title="Infection chance." alt="" coords="426,499,559,541"/>
+<area shape="rect" id="node14" href="$class_contact.html#a110d53ffe78646ab489e712819459c6a" title=" " alt="" coords="186,507,350,533"/>
+<area shape="rect" id="node15" href="$rule_8cpp.html#ac135eff571ca551b64c2a084d0bcc44b" title=" " alt="" coords="197,557,339,584"/>
+<area shape="rect" id="node16" href="$class_node.html#ae653e5265823d0eb583e94fc0d856064" title="sets infection chance" alt="" coords="201,609,335,650"/>
+<area shape="rect" id="node3" href="$class_rule.html#a56540f772be7b22ec4b1f8d8d38be21c" title=" " alt="" coords="453,5,533,32"/>
+<area shape="rect" id="node4" href="$class_node.html#a35d0f5afc420c2e88cb138e396088c1c" title=" " alt="" coords="400,57,585,98"/>
+<area shape="rect" id="node5" href="$class_node.html#aa1f0c0f6518ea5806dec76d6ec6d099d" title=" " alt="" coords="400,122,585,163"/>
+<area shape="rect" id="node7" href="$class_exponential.html#a4e368e753fe35591198181d32ee91c73" title=" " alt="" coords="424,187,561,229"/>
+<area shape="rect" id="node9" href="$class_normal.html#ac9d02e82fbcd69ef0a69802f60627fd7" title=" " alt="" coords="413,253,572,280"/>
+</map>

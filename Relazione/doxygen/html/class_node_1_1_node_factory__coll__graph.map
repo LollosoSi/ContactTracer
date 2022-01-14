@@ -1,0 +1,3 @@
+<map id="Node::NodeFactory" name="Node::NodeFactory">
+<area shape="rect" id="node1" title="Allows for faster building of a Node object and must be used to ensure compatibility." alt="" coords="5,5,169,200"/>
+</map>

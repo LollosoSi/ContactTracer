@@ -1,0 +1,9 @@
+<map id="Node::get_infection_chance" name="Node::get_infection_chance">
+<area shape="rect" id="node1" title="Infection chance." alt="" coords="581,61,715,102"/>
+<area shape="rect" id="node2" href="$class_simple_rule.html#acd87d9b7553bd81a0eee7513bd1d09f4" title=" " alt="" coords="187,5,307,32"/>
+<area shape="rect" id="node3" href="$class_complex_rule.html#a41a2b396339cab3848f27b6530d3a185" title=" " alt="" coords="181,81,312,108"/>
+<area shape="rect" id="node4" href="$class_graph.html#a61eff44ec84fb3c9eff988dd43c27510" title=" " alt="" coords="360,145,533,186"/>
+<area shape="rect" id="node7" href="$rule_8cpp.html#ac135eff571ca551b64c2a084d0bcc44b" title=" " alt="" coords="376,43,517,69"/>
+<area shape="rect" id="node5" href="$consolecommands_8h.html#a6bd9b7ab8341976b54c9d54c53f6f078" title=" " alt="" coords="199,152,295,179"/>
+<area shape="rect" id="node6" href="$consolecommands_8h.html#ab655b6c59ff758c2dafc6b27127219e3" title=" " alt="" coords="5,152,133,179"/>
+</map>

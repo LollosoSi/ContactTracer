@@ -1,0 +1,119 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Manuale d'urso</title>
+
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+
+.ct{
+display:flex;
+flex-flow:wrap;
+}
+
+.mdc-card{flex:1; min-width:350px; min-height:20px; margin-left:20px; magin-right:20px; margin:auto; padding:20px; padding-bottom:30px; display:inline-block;}
+
+h3{
+margin-left:20px;
+}
+span{
+margin-left:40px;
+white-space: break-spaces;
+min-width:100px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="ct">
+
+
+
+<div class="mdc-card" >
+<h3>chance</h3><span>Mostra la probabilità percentuale di infezione di un nodo.</span>
+</div>
+
+<div class="mdc-card">
+<h3>contact</h3><span>Mostra o aggiunge le informazioni di contatto tra due nodi.</span>
+<br><span>Aggiunge un nuovo nodo se uno tra i contatti non si trova nel grafo.</span>
+<br><span>Formato: "contact <tt>id-nodo1</tt> <tt>id-nodo2</tt>" per mostrare le informazioni del contatto.</span>
+<br><span>Formato: "contact <tt>id-nodo1</tt> <tt>id-nodo2</tt> <tt>distanza</tt> <tt>esposizione</tt> <tt>data</tt>" per aggiungere un nuovo contatto.</span>
+</div>
+
+<div class="mdc-card" >
+<h3>c</h3><span>Scorciatoia per il comando <tt>contatto</tt>.</span>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>delcontact</h3><span>Elimina un contatto.</span>
+<br><span>Formato: "delcontact <tt>id-nodo1</tt> <tt>id-nodo2</tt>" </span>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>d</h3><span>Scorciatoia per <tt>delcontact</tt>.</span>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>exit</h3><span>Chiude il programma.</span>
+</div>
+
+<div class="mdc-card">
+<h3>help</h3><span>Mostra la pagina di aiuto.</span>
+</div>
+
+<div class="mdc-card" >
+<h3>mark</h3><span>Marca un nodo come infetto o pulito.</span>
+<br><span>Formato: "mark <tt>id-nodo</tt> <tt>0/1</tt>" 0 -> pulito, 1 -> infetto </span>
+</div>
+
+<div class="mdc-card" >
+<h3>node</h3><span>Mostra o aggiunge le informazioni un nuovo nodo.</span>
+<br><span>Formato: "node <tt>id-nodo</tt>" per mostrare le informazioni del un nodo.</span>
+<br><span>Formato: "node <tt>id-nodo</tt> <tt>tipo</tt>" per aggiungere un nuovo nodo.</span>
+<br>
+<ul>
+Tipi di nodo disponibili:
+<li>0 : Nodo generico</li>
+<li>1 : Persona</li>
+<li>2 : Edificio</li>
+</ul>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>load</h3><span>Carica un file.</span>
+<br><span>Formato: "load <tt>nome-file</tt>"</span>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>printall</h3><span>Mostra la probabilità percentuale di infezione per tutti i nodi.</span>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>rule</h3><span>Seleziona la regola.</span>
+<br><span>Formato: "Rule <tt>indice</tt>" l'indice è 0, 1, 2..</span>
+<br>
+<ul>
+Tipi di regola disponibili:
+<li>0 : Regola semplice</li>
+<li>1 : Regola complessa (calcolo con vere funzioni di probablità)</li>
+<li>2 : Regola per distanza (distanza minima da infetto)</li>
+<li>3 : Regola per azzerare i valori nel grafo</li>
+</ul>
+</div>
+
+<div class="mdc-card" style="display:block">
+<h3>save</h3><span>Salva su file.</span>
+<br><span>Formato: "Save <tt>nome-file</tt>"</span>
+</div>
+
+
+</div>
+</body>
+
+</html>
