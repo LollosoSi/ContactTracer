@@ -17,6 +17,7 @@ const list = new MDCList(document.querySelector('.mdc-list'));
 </script>
 
 <head>
+<title>Presentation Page</title>
  <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
@@ -210,31 +211,38 @@ function getPath(id){
 switch(id){
 
 case "Intro":
+	document.title = "CT: Introduzione";
 	return "relazione.html#Introduzione";
 break;
 
 case "Esp":
+	document.title = "CT: Espandibilità";
 	return "espandibilita.html";
 break;
 
 case "AReq":
+	document.title = "CT: Analisi Requisiti";
 	return "relazione.html#Analisi-Requisiti";
 break;
 
 case "Req":
+	document.title = "CT: Requisiti";
 	return "relazione.html#Requisiti";
 break;
 
 case "Doc":
+	document.title = "CT: Documentazione";
 hide();
 	return "doxygen/html/index.html";
 break;
 
 case "Man":
+	document.title = "CT: Manuale d'urso";
 	return "manuale.html";
 break;
 
 case "Test":
+	document.title = "CT: Testing";
 	return "testing.html";
 break;
 
