@@ -94,10 +94,34 @@ main{height:100%;}
 		display:none;
 	}
 	.mdc-list-item{
-		flex: 1 0 auto;
+		flex: 1 1 40%;
 		text-align:center;
+		vertical-align:center;
+		justify-content:center;
 	}
 	
+	.mdc-list-item__text{
+		text-align:center;
+		vertical-align:center;
+		padding-top:2%;
+	}
+	
+	.mdc-list-item__ripple, .mdc-list-item__primary-text, .mdc-list-item__secondary-text{
+		text-align:center;
+		vertical-align:center;
+		
+	}
+	
+	.mdc-list-item__primary-text{
+	font-size: 5.2vmin;
+	
+	}
+	
+	.mdc-list-item__secondary-text {
+	font-size: 4vmin;
+	}
+	
+
 	.mdc-list {
 		display:flex;
 		
@@ -197,8 +221,9 @@ main{height:100%;}
       <span class="mdc-list-item__primary-text">Analisi dei requisiti</span>
       <span class="mdc-list-item__secondary-text">Perché funziona</span>
     </span>
-	 <li role="separator" class="mdc-list-divider"></li>
+	 
   </li>
+  <li role="separator" class="mdc-list-divider"></li>
    <li id="Doc" class="mdc-list-item">
     <span class="mdc-list-item__ripple"></span>
     <span class="mdc-list-item__text">
